@@ -1,0 +1,19 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "foodstore",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*",
+    "express-basic-auth": "*",
+    "auth0-api-jwt-rsa-validation": "*",
+    "express-jwt": "*"
+  },
+  "author": "Ahmad Saied",
+  "license": "ISC"
+}
