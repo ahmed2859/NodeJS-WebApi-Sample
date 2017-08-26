@@ -13,25 +13,25 @@ app.use(basicAuth({
 }));
 
 
-StoreItem = require('./models/storeitems');
+StoreItem = require('./models/account');
 
-mongoose.connect('mongodb://localhost/store');
+mongoose.connect('mongodb://localhost/account');
 var db = mongoose.connection
 
 app.get('/', function(req, res){
   res.send("Hello World");
 });
 
-app.get('/api/storeitems', function(req, res){
-  StoreItem.getStoreItems(function(err, storeitems){
+app.get('/api/accounts', function(req, res){
+  StoreItem.getStoreItems(function(err, accounts){
     if (err) {
       throw err;
     }
-    res.json(storeitems);
+    res.json(accounts);
   });
 });
 
-app.get('/api/storeitems/:_id', function(req, res){
+app.get('/api/accounts/:_id', function(req, res){
   StoreItem.getStoreItemById(req.params._id, function(err, storeitem){
     if (err) {
       throw err;
@@ -40,7 +40,7 @@ app.get('/api/storeitems/:_id', function(req, res){
   });
 });
 
-app.post('/api/storeitems', function(req, res){
+app.post('/api/accounts', function(req, res){
   var storeitem = req.body;
   StoreItem.addStoreItem(storeitem, function(err, storeitem){
     if (err) {
@@ -50,7 +50,7 @@ app.post('/api/storeitems', function(req, res){
   });
 });
 
-app.put('/api/storeitems/:_id', function(req, res){
+app.put('/api/accounts/:_id', function(req, res){
   var id = req.params._id;
   var storeitem = req.body;
   StoreItem.updateStoreItem(id, storeitem, {}, function(err, storeitem){
@@ -61,7 +61,7 @@ app.put('/api/storeitems/:_id', function(req, res){
   });
 });
 
-app.delete('/api/storeitems/:_id', function(req, res){
+app.delete('/api/accounts/:_id', function(req, res){
   var id = req.params._id;
   StoreItem.deleteStoreItem(id, function(err, storeitem){
     if (err) {
