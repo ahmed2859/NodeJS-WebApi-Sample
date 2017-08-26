@@ -7,10 +7,10 @@ var jwt = require('express-jwt');
 var rsaValidation = require('auth0-api-jwt-rsa-validation');
 
 
-app.use(bodyParser.json());
-app.use(basicAuth({
-  users: {'admin': 'superse'}
-}));
+// app.use(bodyParser.json());
+// app.use(basicAuth({
+//   users: {'admin': 'superse'}
+// }));
 
 
 StoreItem = require('./models/account');
