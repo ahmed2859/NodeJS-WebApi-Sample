@@ -9,7 +9,7 @@ var rsaValidation = require('auth0-api-jwt-rsa-validation');
 
 app.use(bodyParser.json());
 app.use(basicAuth({
-  users: {'ahmad': 'superse'}
+  users: [{'ahmad': 'ahmad'}, {'nemo': 'nemo'}]
 }));
 
 
