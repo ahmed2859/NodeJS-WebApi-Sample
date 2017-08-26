@@ -13,7 +13,7 @@ var rsaValidation = require('auth0-api-jwt-rsa-validation');
 // }));
 
 
-StoreItem = require('./models/account');
+Account = require('./models/account');
 
 mongoose.connect('mongodb://localhost/account');
 var db = mongoose.connection
@@ -23,7 +23,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/api/accounts', function(req, res){
-  StoreItem.getStoreItems(function(err, accounts){
+  Account.getAccounts(function(err, accounts){
     if (err) {
       throw err;
     }
@@ -32,42 +32,42 @@ app.get('/api/accounts', function(req, res){
 });
 
 app.get('/api/accounts/:_id', function(req, res){
-  StoreItem.getStoreItemById(req.params._id, function(err, storeitem){
+  Account.getAccountById(req.params._id, function(err, accounts){
     if (err) {
       throw err;
     }
-    res.json(storeitem);
+    res.json(accounts);
   });
 });
 
 app.post('/api/accounts', function(req, res){
-  var storeitem = req.body;
-  StoreItem.addStoreItem(storeitem, function(err, storeitem){
+  var account = req.body;
+  Account.addAccount(account, function(err, account){
     if (err) {
       throw err;
     }
-    res.json(storeitem);
+    res.json(account);
   });
 });
 
 app.put('/api/accounts/:_id', function(req, res){
   var id = req.params._id;
-  var storeitem = req.body;
-  StoreItem.updateStoreItem(id, storeitem, {}, function(err, storeitem){
+  var account = req.body;
+  Account.updateAccount(id, account, {}, function(err, account){
     if (err) {
       throw err;
     }
-    res.json(storeitem);
+    res.json(account);
   });
 });
 
 app.delete('/api/accounts/:_id', function(req, res){
   var id = req.params._id;
-  StoreItem.deleteStoreItem(id, function(err, storeitem){
+  Account.deleteAccount(id, function(err, account){
     if (err) {
       throw err;
     }
-    res.json(storeitem);
+    res.json(account);
   });
 });
 
