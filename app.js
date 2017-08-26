@@ -7,10 +7,10 @@ var jwt = require('express-jwt');
 var rsaValidation = require('auth0-api-jwt-rsa-validation');
 
 
-// app.use(bodyParser.json());
-// app.use(basicAuth({
-//   users: {'admin': 'superse'}
-// }));
+app.use(bodyParser.json());
+app.use(basicAuth({
+  users: {'ahmad': 'superse'}
+}));
 
 
 Account = require('./models/account');
@@ -19,7 +19,7 @@ mongoose.connect('mongodb://localhost/account');
 var db = mongoose.connection
 
 app.get('/', function(req, res){
-  res.send("Hello World");
+  res.send("Ahmad Said WSAPI");
 });
 
 app.get('/api/accounts', function(req, res){
